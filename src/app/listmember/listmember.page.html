@@ -1,0 +1,85 @@
+<ion-content [scrollEvents]="true" >
+  <ion-grid class="padding_bottom">
+    <ion-row class="custom_toolbar">
+      <ion-toolbar color="light_background">
+        <span class="header_span" routerLink="/dashboard">
+          <i class="fas fa-angle-left fa-fw"  ></i>
+        </span>
+    </ion-toolbar>
+    </ion-row>
+    
+ <ion-row *ngIf="patient_member_list_length">
+   <ion-col size="12">
+     <div class="image_container">
+    <img src="assets/icon/no_member.svg" alt="">
+  </div>
+   </ion-col>
+   <ion-col size="12" class="not_found">
+    <ion-text >You don't have any member added.</ion-text>
+
+   </ion-col>
+  
+ </ion-row>
+
+    <ion-row class="visibility" *ngIf="!patient_member_list_length">
+      <ion-card  class="skeletoncard animate_card" id="card{{d.id}}" *ngFor="let d of patient_member_list; let i=index;" >           
+        <ion-card-content>          
+          <ion-row class="cardtop">   
+            <ion-col size="2">
+              <div class="uhid_text">
+                <img src="assets/avatar/skeleton_avatar.png" alt="" *ngIf="!d.image">
+                <img src="{{url.patient_image}}/{{d.image}}" alt="" *ngIf="d.image" >
+
+              </div> 
+            </ion-col>          
+            <ion-col size="10">
+               <div class="doc_name">{{d.f_name}} {{d.l_name}} </div> 
+               <div class="doc_category">{{d.gender}}</div>
+            </ion-col>
+
+                  
+          </ion-row>
+          <ion-row class="section">
+            <ion-col size="6">
+              <ion-text><i class="fas fa-birthday-cake fa-fw"></i> {{d.dob}} </ion-text>
+            </ion-col>
+           
+            <ion-col size="6">
+              <ion-text *ngIf="d.status==1"><i class="fas fa-circle active_dot fa-fw"></i> Active </ion-text>
+              <ion-text *ngIf="d.status==0"><i class="fas fa-ban waiting_dot fa-fw"></i> Blocked </ion-text>
+            </ion-col>           
+          </ion-row>
+
+          <ion-row class="opd_card_footer">
+           
+            <ion-col size="6" class="tooltip2">
+              <ion-button expand="block" size="small" (click)="edit_member(d.id)">Edit Info</ion-button>
+            </ion-col>
+            <ion-col size="6" class="tooltip2" >
+              <ion-button expand="block" size="small" color="greybutton" class="grey" (click)="delete_patient(d.id)">
+                Delete Member
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      </ion-row>
+
+      
+  </ion-grid>
+  <!-- <app-footer></app-footer> -->
+ 
+  <ion-row>
+    <div class="add_button_plus" routerLink="/managemember">
+      <i class="fas fa-user-plus fa-fw "></i>    
+    </div>
+  </ion-row>
+  
+  <div id="snackbar"> <span id="snackbar_error"></span></div>
+
+ 
+  <div class="loader" *ngIf="loader_visibility">
+    <img src="assets/icon/loader.gif" alt="">
+   </div>
+   
+</ion-content>

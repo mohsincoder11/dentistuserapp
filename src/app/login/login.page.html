@@ -1,0 +1,65 @@
+<ion-content class="main_container">
+  <div class="image_container">
+    <img src="assets/loginto.svg" alt="">
+  </div>
+
+
+  <div>
+    <form #form_login="ngForm" class="form">
+      <ion-grid>
+
+        <h2>Welcome Back !</h2>
+        <p>Sign in to your account</p>
+        <ion-row>
+
+          <ion-col size="12">
+            <ion-item lines="none">
+              <ion-label position="floating"> Mobile No</ion-label>
+              <ion-input type="number" ngModel name="mobile"></ion-input>
+              <ion-text class="error_msg" color="danger" *ngIf="mobile_length"> Enter 10 digit mobile nuumber.
+              </ion-text>
+
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+
+            <ion-item lines="none">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" ngModel name="password"></ion-input>
+              <ion-text class="error_msg" color="danger" *ngIf="password"> This field is required</ion-text>
+
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row class="last_row">
+          <ion-col size="12">
+
+            <ion-button color="secondary" expand="block" (click)="log_in(form_login)">
+              Sign In
+            </ion-button>
+            <div routerLink='/forgot'> <label class="forgot">Forgot password ?</label></div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-button color="secondary" expand="block" fill="outline" routerLink="/creataccount">
+              Create Account
+            </ion-button><br>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+  <div class="top_wave">
+    <img src="assets/icon/login_svg.svg" alt="">
+  </div>
+
+  <div id="snackbar"> <span id="snackbar_error"></span></div>
+
+
+  <div class="loader" *ngIf="loader_visibility">
+    <img src="assets/icon/loader.gif" alt="">
+   </div>
+
+</ion-content>

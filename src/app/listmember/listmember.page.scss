@@ -1,0 +1,122 @@
+*{
+    font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .image_container{
+      text-align: center;
+      padding-top: 15vh;
+      padding-bottom: 1vh;
+      img{
+          height: 30vh;
+          width: 30vh;
+      }
+      }
+.not_found{
+  color: var(--ion-color-medium2);
+  text-align: center;
+  font-size: 1em;
+}
+
+    .padding_bottom {
+    padding-bottom: 18%;
+  }
+  .custom_toolbar3{
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--ion-color-light);
+     
+    }
+
+  .grey{
+    background-color:var(--ion-color-medium2-tint);
+    color: var(--ion-color-medium2);
+    border-radius: 4px;
+  }
+ 
+  
+  .skeletoncard {
+    border-bottom: 2px solid var(--ion-color-secondary);
+    background: var(--ion-color-cardback);
+    margin-top: 0px;
+  
+    .doc_name {
+      color: var(--ion-color-medium);
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+    .doc_category {
+      color: var(--ion-color-medium2);
+      font-size: 0.9em;
+      font-weight: bold;
+  
+    }
+    .cardtop {
+      .uhid_text{
+        background-color:var(--ion-color-cardback);
+      }
+      border-bottom: 1px solid var(--ion-color-light-shade);
+      img{
+        border-radius:5px;
+        box-shadow: rgba(150, 150, 150, 0.35) 0px 5px 15px;
+        height: 5vh;
+        width: 5vh;
+      }
+    }
+    .section {
+      color: var(--ion-color-medium2);
+    }
+    .active_dot {
+      color: var(--ion-color-success);
+      font-size: 0.7em;
+    }
+    .waiting_dot {
+      color: var(--ion-color-danger);
+      font-size: 0.9em;
+    }
+    .section {
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+  }
+@-webkit-keyframes slide-left{0%{-webkit-transform:translateX(0);transform:translateX(0)}100%{-webkit-transform:translateX(-110%);transform:translateX(-110%)}}@keyframes slide-left{0%{-webkit-transform:translateX(0);transform:translateX(0)}100%{-webkit-transform:translateX(-110%);transform:translateX(-110%)}}
+  .skeletoncard.delete{
+    -webkit-animation:slide-left .2s cubic-bezier(.25,.46,.45,.94) both;animation:slide-left .2s cubic-bezier(.25,.46,.45,.94) both;
+  }
+  
+  ion-button {
+    text-transform: capitalize;
+    font-size: 0.7em;
+  }
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
+  .visibility {
+    -webkit-animation:fade-in 0.8s cubic-bezier(.39,.575,.565,1.000) both;animation:fade-in 0.8s cubic-bezier(.39,.575,.565,1.000) both;
+  
+  
+    display: block;
+  }
+  .visibility.hide {
+    display: none;
+  }
+  
+  
+  
+  

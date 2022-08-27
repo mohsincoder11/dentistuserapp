@@ -1,0 +1,75 @@
+<ion-content [scrollEvents]="true"  >
+  <ion-grid class="padding_bottom">
+    <ion-row class="custom_toolbar">
+      <ion-toolbar color="light_background">
+        <span class="header_span" routerLink="/dashboard">
+          <i class="fas fa-angle-left fa-fw"  ></i>
+        </span>
+       
+
+    </ion-toolbar>
+    </ion-row>
+
+<ion-row *ngIf="doctor_list">
+  <ion-text class="header_text">
+    Doctors from <span class="capitalize_label">{{hospital_name}}</span>    
+  </ion-text>
+</ion-row>
+ <ion-row class="visibility" *ngIf="doctor_list">
+  <ion-card  class="skeletoncard animate_card" *ngFor="let d of doctor_list; let i=index;" >           
+    <ion-card-content>          
+      <ion-row class="cardtop">   
+        <ion-col size="2">
+          <div class="uhid_text">
+            <img src="assets/avatar/skeleton_avatar.png" alt="" *ngIf="!d.image">
+            <img src="{{url.doctor_image}}/{{d.image}}" alt="" *ngIf="d.image" >
+
+          </div> 
+        </ion-col>          
+        <ion-col size="8">
+           <div class="doc_name">Dr. {{d.f_name}} {{d.l_name}} </div> 
+           <div class="doc_category">{{d.specialization}}</div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="doc_Rating"><span class="star_color"><i class="fas fa-star"></i></span> {{d.total_rating/d.patient_count || 0 |truncaterating}} </div> 
+
+        </ion-col>              
+      </ion-row>
+
+      <ion-row class="opd_card_footer">       
+        <ion-col size="12" class="tooltip2">
+          <ion-button expand="block" size="small" (click)="goto_doctor_details(d.id)">Book Appointment</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  </ion-row>
+
+  <ion-row *ngIf="no_doctor">
+    <ion-col size="12">
+      <div class="image_container">
+     <img src="assets/icon/no_member.svg" alt="">
+   </div>
+    </ion-col>
+    <ion-col size="12" class="not_found">
+     <ion-text >No doctor available for this hospital. Please try another hospital.</ion-text>   
+    </ion-col>     
+  </ion-row>
+  </ion-grid>
+  <!-- <app-footer></app-footer> -->
+ 
+  
+
+  
+  <div class="loader" *ngIf="loader_visibility">
+    <img src="assets/icon/loader.gif" alt="">
+   </div>
+
+    <ion-row>
+    <div class="back-to-top-btn" *ngIf="backToTop" (click)="gotToTop()">
+      <ion-icon name="chevron-up-outline"></ion-icon>
+    </div>
+  </ion-row>
+  <app-footer></app-footer>
+
+</ion-content>

@@ -1,0 +1,224 @@
+*{
+  font-family: 'Nunito Sans', sans-serif;
+  }
+  .padding_bottom {
+  padding-bottom: 18%;
+}
+.custom_toolbar3{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: var(--ion-color-light);
+   
+  }
+.shedule_button {
+  background-color: var(--ion-color-medium2-tint);
+  border-radius: 6px;
+  margin-left: 2%;
+  margin-right: 2%;
+  color: var(--ion-color-medium2);
+  font-size: 0.6em;
+  margin-bottom: 4%;
+  transition: 0.5s ease-in;
+
+}
+.grey{
+  background-color:var(--ion-color-medium2-tint);
+  color: var(--ion-color-medium2);
+  border-radius: 4px;
+}
+.col {
+  border-radius: 4px;
+  padding: 1vh;
+  color: var(--ion-color-medium2);
+  font-weight: bold;
+  text-align: center;
+}
+@-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
+.col.active {
+      color: #fff;  
+  background-color: var(--ion-color-secondary);
+  -webkit-animation:fade-in .5s cubic-bezier(.39,.575,.565,1.000) both;animation:fade-in .5s cubic-bezier(.39,.575,.565,1.000) both;
+}
+
+.skeletoncard {
+  border-bottom: 2px solid var(--ion-color-secondary);
+  background: var(--ion-color-cardback);
+  margin-top: 0px;
+  width: 98%;
+  .card_header{
+    padding-bottom: 0.5vh;
+    ion-card-subtitle{   
+      letter-spacing: 1px;
+      font-weight: bold;
+    color: var(--ion-color-secondary) !important;
+    opacity: 0.8;
+  } 
+}
+
+  .doc_name {
+    color: var(--ion-color-medium);
+    font-weight: bold;
+    font-size: 0.9em;
+    line-height: 1.8em;
+  }
+  .doc_name.appointment_id
+  {
+    font-size: 0.9em;
+    font-weight: normal;
+
+  }
+  .doc_category {
+    color: var(--ion-color-medium2);
+    font-size: 0.9em;       
+  } 
+  .doc_category.address {
+    color: var(--ion-color-dark);
+    font-size: 0.9em;  
+    font-weight: normal;     
+  }
+  .doc_category.doc_name2{
+    color: var(--ion-color-medium);
+    font-size: 0.9em;
+  font-weight: bold;
+  }
+  .cardtop {
+    border-bottom: 1px solid var(--ion-color-light-shade);
+  }
+  .section {
+    color: var(--ion-color-medium2);
+  }
+  .cancel{   
+     font-size: 0.8em;
+    color: var(--ion-color-danger);
+  }
+  .cancel_dot{
+    font-size: 0.8em;
+    color: var(--ion-color-danger);
+  }
+  .active{
+    color: var(--ion-color-success);
+  }
+  .active_dot {
+    color: var(--ion-color-success);
+    font-size: 0.7em;
+  }
+  .waiting{
+    color: var(--ion-color-primary);
+  }
+  .waiting_dot {
+    color: var(--ion-color-primary);
+    font-size: 0.85em;
+  }
+  .section {
+    font-size: 0.85em;
+    font-weight: bold;
+  }
+}
+ion-button {
+  text-transform: capitalize;
+  font-size: 0.7em;
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-right{0%{-webkit-transform:translateX(1000px);transform:translateX(1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-right{0%{-webkit-transform:translateX(1000px);transform:translateX(1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
+.visibility {
+  -webkit-animation:slide-in-right .2s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-right .2s cubic-bezier(.25,.46,.45,.94) both;
+
+
+  display: block;
+}
+.visibility.hide {
+  display: none;
+}
+
+
+
+.downarrow{
+    float: right;
+    font-weight: bold;
+    font-size: 16px;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out;
+}
+
+.downarrow.collapsed{  
+  transform: rotate(180deg);
+  transition: 0.5s ease-in-out;
+}
+.section {
+    overflow:hidden;
+    height:0;  
+
+  }
+ 
+  @-webkit-keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}@keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+  .section.collapsed {
+    -webkit-animation:swing-in-top-fwd 0.9s cubic-bezier(.175,.885,.32,1.275) both;animation:swing-in-top-fwd 0.9s cubic-bezier(.175,.885,.32,1.275) both;
+    height:100%;
+  }
+
+
+  @-webkit-keyframes slide-left{0%{-webkit-transform:translateX(0);transform:translateX(0)}100%{-webkit-transform:translateX(110%);transform:translateX(110%)}}@keyframes slide-left{0%{-webkit-transform:translateX(0);transform:translateX(0)}100%{-webkit-transform:translateX(110%);transform:translateX(110%)}}
+  .skeletoncard.delete{
+    -webkit-animation:slide-left .2s cubic-bezier(.25,.46,.45,.94) both;animation:slide-left .2s cubic-bezier(.25,.46,.45,.94) both;
+  }
+
+  .image_container{
+    text-align: center;
+    padding-top: 15vh;
+    padding-bottom: 1vh;
+    img{
+        height: 30vh;
+        width: 30vh;
+    }
+    }
+.not_found{
+color: var(--ion-color-medium2);
+text-align: center;
+font-size: 0.9em;
+}
+.no_appointment{
+  visibility: hidden;
+  display: none;
+}
+.no_appointment.show{
+  visibility: visible;
+  height: auto;
+
+}
+
+.star_color{
+  margin:0 0.5vw;
+  color: var(--ion-color-warning);
+  font-size:1.5em;
+}
+.cardtop {
+  .uhid_text{
+    background-color:var(--ion-color-cardback);
+  }
+  border-bottom: 1px solid var(--ion-color-light-shade);
+  img{
+    border-radius:5px;
+    box-shadow: rgba(150, 150, 150, 0.35) 0px 5px 15px;
+    height: 5vh;
+    width: 5vh;
+  }
+}

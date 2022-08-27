@@ -1,0 +1,40 @@
+* {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.form {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.forgot {
+  float: right;
+  font-size: 0.8em;
+  color: var(--ion-color-secondary);
+  padding-top: 10px;
+}
+
+.last_row {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+h2 {
+  font-weight: bold;
+  line-height: 14px;
+}
+
+p {
+  color: var(--ion-color-newcolor);
+  font-size: 0.9em;
+}
+
+.image_container {
+  text-align: center;
+  padding-top: 1vh;
+  padding-bottom: 0.2vh;
+  img {
+    height: 25vh;
+    width: 25vh;
+  }
+}

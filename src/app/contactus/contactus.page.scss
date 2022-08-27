@@ -1,0 +1,46 @@
+* {
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  
+  .form {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .main_row{
+      padding: 1.5vh 0 0 0;
+  }
+  h2 {
+    font-weight: bold;
+    line-height: 14px;
+  }
+  p {
+    color: var(--ion-color-newcolor);
+    font-size: 0.9em;
+  }
+  
+  .image_container {
+    text-align: center;
+    padding-top: 1vh;
+    padding-bottom: 0.2vh;
+    img {
+      height: 25vh;
+      width: 25vh;
+    }
+  }
+  .faicon{
+      font-size:1.5em;
+  }
+  ion-text{
+      padding-top:1vh;
+      display: inline-block;
+      font-size:0.8em;
+  }
+  .btn-primary{
+    color:var(--ion-color-primary);
+}
+.btn-success{
+    color:var(--ion-color-success);
+}
+.btn-warning{
+    color:var(--ion-color-warning);
+}

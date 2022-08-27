@@ -1,0 +1,8 @@
+{
+  "name": "userAppointment",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

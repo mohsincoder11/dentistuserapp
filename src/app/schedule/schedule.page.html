@@ -1,0 +1,229 @@
+<ion-content [scrollEvents]="true" >
+  <ion-grid class="padding_bottom">
+    <ion-row class="custom_toolbar">
+      <ion-toolbar color="light_background">
+        <span class="header_span" routerLink="/dashboard">
+          <i class="fas fa-angle-left fa-fw"></i>
+        </span>
+      </ion-toolbar>
+    </ion-row>
+    <ion-row class="shedule_button">
+      <ion-col size="4" class="col" id="upcoming" (click)="get_appointment('upcoming')">
+        Upcoming
+      </ion-col>
+      <ion-col size="4" class="col" id="completed" (click)="get_appointment('completed')">
+        Completed
+      </ion-col>
+      <ion-col size="4" class="col" id="canceled" (click)="get_appointment('canceled')">
+        Canceled
+      </ion-col>
+    </ion-row>
+
+<span class="visibility" id="visibility_upcoming">
+    <ion-row >
+      <ion-card class="skeletoncard animate_card" *ngFor="let d of upcoming; let i=index;" id="card{{d.id}}">       
+        <ion-card-content>
+          <ion-row class="cardtop">
+            <ion-col size="2">
+              <div class="uhid_text">
+                <img src="{{url.patient_image}}/{{d.patient_image}}" *ngIf="d.patient_image">
+                <img src="assets/avatar/skeleton_avatar.png" *ngIf="!d.patient_image">
+              </div>
+            </ion-col>
+            <ion-col size="9">
+              <div class="doc_name">{{d.patient_f_name}} {{d.patient_l_name}}</div>              
+              <div class="doc_name appointment_id">ID : {{d.appointment_id}} </div>              
+            </ion-col>
+            <ion-col size="1" >
+              <span class="downarrow" id="downarrowupcoming{{i}}" (click)="toggle_div('upcoming'+i)">               
+                <i class="fas fa-angle-down" ></i>
+              </span>
+            </ion-col>           
+          </ion-row>
+
+          <ion-row class="section" id="collapsibleupcoming{{i}}">
+            <ion-col size="12" >
+              <div class="doc_category doc_name2">Dr. {{d.d_f_name}} {{d.d_l_name}}</div>
+              <div class="doc_category">{{d.specialization}}</div>
+              <div class="doc_category address">{{d.hospital_name}} , {{d.address}}</div>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text><i class="fas fa-calendar"></i> {{d.date}} </ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text><i class="fas fa-clock"></i> {{d.time}} </ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text *ngIf="d.status==1"><i class="fas fa-circle fa-fw active_dot"></i> <span class="active"> Confirmed</span>  </ion-text>
+              <ion-text *ngIf="d.status==0"><i class="fas fa-hourglass-end fa=fw waiting_dot"></i><span class="waiting"> Waiting</span>  </ion-text>
+              </ion-col>
+          </ion-row>
+          <ion-row class="opd_card_footer">
+            <ion-col size="6" class="tooltip2">
+              <ion-button expand="block" size="small" routerLink="/doctordetails/{{d.doctor_id}}">Reschedule</ion-button>
+            </ion-col>
+            <ion-col size="6" class="tooltip2">
+              <ion-button expand="block" size="small" color="greybutton" (click)="cancel_appointment(d.id)" class="grey">
+                Cancel
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <ion-row *ngIf="upcoming_length">
+      <ion-col size="12">
+        <div class="image_container">
+       <img src="assets/icon/no_member.svg" alt="">
+     </div>
+      </ion-col>
+      <ion-col size="12" class="not_found">
+       <ion-text >You don't have any upcoming appointments.</ion-text>   
+      </ion-col>     
+    </ion-row>
+  </span>
+
+  <span class="visibility" id="visibility_completed">
+    <ion-row >
+      <ion-card class="skeletoncard animate_card" *ngFor="let d of completed; let i=index;">
+        <ion-card-content>
+          <ion-row class="cardtop">
+            <ion-col size="2">
+              <div class="uhid_text">
+                <img src="{{url.patient_image}}/{{d.patient_image}}" *ngIf="d.patient_image">
+                <img src="assets/avatar/skeleton_avatar.png" *ngIf="!d.patient_image">
+              </div>
+            </ion-col>
+            <ion-col size="9">
+              <div class="doc_name">{{d.patient_f_name}} {{d.patient_l_name}}</div>              
+              <div class="doc_name appointment_id">ID : {{d.appointment_id}} </div>              
+            </ion-col>
+            <ion-col size="1" >
+              <span class="downarrow" id="downarrowcompleted{{i}}" (click)="toggle_div('completed'+i)">               
+                <i class="fas fa-angle-down" ></i>
+              </span>
+            </ion-col>           
+          </ion-row>
+
+          <ion-row class="section" id="collapsiblecompleted{{i}}">
+            <ion-col size="12" >
+              <div class="doc_category doc_name2">Dr. {{d.d_f_name}} {{d.d_l_name}}</div>
+              <div class="doc_category">{{d.specialization}}</div>
+              <div class="doc_category">{{d.hospital_name}} , {{d.address}}</div>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text><i class="fas fa-calendar"></i> {{d.date}} </ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text><i class="fas fa-clock"></i> {{d.time}} </ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text *ngIf="d.status==-1"><i class="fas fa-times fa-fw cancel_dot"></i><span class="cancel"> Canceled</span>  </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="opd_card_footer">
+            <ion-col size="6" class="tooltip2">
+              <ion-button expand="block" size="small" routerLink="/doctordetails/{{d.doctor_id}}">Reschedule</ion-button>
+            </ion-col>
+            <ion-col size="6" class="tooltip2" *ngIf="d.rate_value!=null">
+              <ion-button expand="block" fill="clear" size="small" color="dark" disabled> Rated : 
+                <i class="fas fa-star fa-fw star_color"></i>{{d.rate_value}}
+
+              </ion-button>
+            </ion-col>
+            <ion-col size="6" class="tooltip2" *ngIf="d.rate_value==null">
+              <ion-button expand="block" fill="clear" size="small" color="dark" (click)="rate_doctor(d.doctor_id,d.id,i)">Rate Doctor</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <ion-row *ngIf="completed_length" >
+      <ion-col size="12">
+        <div class="image_container">
+       <img src="assets/icon/no_member.svg" alt="">
+     </div>
+      </ion-col>
+      <ion-col size="12" class="not_found">
+       <ion-text >You don't have any completed appointments.</ion-text>   
+      </ion-col>     
+    </ion-row>
+  </span>
+
+  <span class="visibility" id="visibility_canceled">
+    <ion-row >
+      <ion-card class="skeletoncard animate_card" *ngFor="let d of canceled; let i=index;">
+        <ion-card-content>
+          <ion-row class="cardtop">
+            <ion-col size="2">
+              <div class="uhid_text">
+                <img src="{{url.patient_image}}/{{d.patient_image}}" *ngIf="d.patient_image">
+                <img src="assets/avatar/skeleton_avatar.png" *ngIf="!d.patient_image">
+              </div>
+            </ion-col>
+            <ion-col size="9">
+              <div class="doc_name">{{d.patient_f_name}} {{d.patient_l_name}}</div>              
+              <div class="doc_name appointment_id">ID : {{d.appointment_id}} </div>              
+            </ion-col>
+            <ion-col size="1" >
+              <span class="downarrow" id="downarrowcancel{{i}}" (click)="toggle_div('cancel'+i)">               
+                <i class="fas fa-angle-down" ></i>
+              </span>
+            </ion-col>           
+          </ion-row>
+
+          <ion-row class="section" id="collapsiblecancel{{i}}">
+            <ion-col size="12" >
+              <div class="doc_category doc_name2">Dr. {{d.d_f_name}} {{d.d_l_name}}</div>
+              <div class="doc_category">{{d.specialization}}</div>
+              <div class="doc_category">{{d.hospital_name}} , {{d.address}}</div>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text><i class="fas fa-calendar"></i> {{d.date}} </ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text><i class="fas fa-clock"></i> {{d.time}} </ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text *ngIf="d.status==-1"><i class="fas fa-times fa-fw cancel_dot"></i>
+                <span class="cancel" *ngIf="d.cancel_by!='Patient did not come'"> Cancel by {{d.cancel_by}}</span> 
+                <span class="cancel" *ngIf="d.cancel_by=='Patient did not come'"> {{d.cancel_by}}</span> 
+               </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="opd_card_footer">
+            <ion-col size="6" class="tooltip2">
+              <ion-button expand="block" size="small" routerLink="/doctordetails/{{d.doctor_id}}">Reschedule</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <ion-row *ngIf="cancel_length" >
+      <ion-col size="12">
+        <div class="image_container">
+       <img src="assets/icon/no_member.svg" alt="">
+     </div>
+      </ion-col>
+      <ion-col size="12" class="not_found">
+       <ion-text >You don't have any canceled appointments.</ion-text>   
+      </ion-col>     
+    </ion-row>
+  </span>
+  </ion-grid>
+  <app-footer></app-footer>
+  <ion-row>
+    <div class="back-to-top-btn" *ngIf="backToTop" (click)="gotToTop()">
+      <ion-icon name="chevron-up-outline"></ion-icon>
+    </div>
+  </ion-row>
+
+
+  <div class="loader" *ngIf="loader_visibility">
+   <img src="assets/icon/loader.gif" alt="">
+  </div>
+  
+</ion-content>

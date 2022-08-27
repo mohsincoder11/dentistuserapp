@@ -1,0 +1,104 @@
+<ion-app>
+  <ion-menu side="start" contentId="main" menuClose="left" (ionWillOpen)="get_session_data()">
+    <ion-content class="menubar">
+
+      <div [ngClass]="'menu-header-bg1'">
+        <div class="header-content">
+          <img src="{{url.patient_image}}/{{session_data.image}}" alt="" *ngIf="session_data.image">    
+          <span class="image_clone" *ngIf="!session_data.image">
+            <span class="image_clone_text">
+              {{session_data.f_name| slice:0:1 | uppercase }}
+              {{session_data.l_name| slice:0:1 | uppercase }}
+            </span>
+          </span>        
+        </div>
+        <span class="username">{{session_data.f_name}} {{session_data.l_name}}</span>
+        <span class="useremail">{{session_data.email}}</span>
+      </div>
+
+      <!-- <ion-row>
+        <ion-col size="3"></ion-col>
+          <ion-col size="6">        
+        <ion-button color="secondary" expand="block" routerLink="/dashboard">
+          Update Profile
+        </ion-button>
+      </ion-col>
+      </ion-row> -->
+
+      <ion-list class="menu-items" lines="none">        
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/listmember">
+            <i class="fas fa-user-cog faicon fa-fw"></i>
+            <ion-text color="medium">Manage Family Member</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/profile">
+            <i class="fas fa-user-edit faicon fa-fw"></i>
+            <ion-text color="medium">My Profile</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/schedule">
+            <i class="fas fa-calendar faicon fa-fw"></i>
+            <ion-text color="medium">Schedule</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/feedback">
+            <i class="fas fa-comment-dots faicon fa-fw"></i>
+            <ion-text color="medium">Feedback</ion-text>
+          </ion-item>
+
+          <ion-item (click)="open_playstore()">
+            <i class="fas fa-star faicon fa-fw"></i>
+            <ion-text color="medium">Rate App</ion-text>
+          </ion-item>
+
+          <ion-item (click)="socialshare()">
+            <i class="fas fa-share-alt-square faicon fa-fw"></i>
+            <ion-text color="medium">Share & Invite</ion-text>
+          </ion-item>
+
+
+          <ion-item routerLink="/aboutus">
+            <i class="fas fa-info-circle fa-fw faicon "></i>
+            <ion-text color="medium">About Us</ion-text>
+          </ion-item>
+
+          <!-- <ion-item>
+            <i class="fas fa-file-alt faicon fa-fw"></i>
+            <ion-text color="medium">Terms & Conditions</ion-text>
+          </ion-item> -->
+
+          <ion-item routerLink="/privacy-policy">
+            <i class="fas fa-user-shield faicon fa-fw"></i>
+            <ion-text color="medium">Privacy Policy</ion-text>
+          </ion-item>
+
+          <ion-item routerLink="/contactus">
+            <i class="fas fa-phone  fa-rotate-90 faicon fa-fw" ></i>
+            <ion-text color="medium">Contact Us</ion-text>
+          </ion-item>
+          
+          <ion-item>
+            <i class="fas fa-code-branch faicon fa-fw"></i>
+            <ion-text color="medium">Version {{VersionNumber}}</ion-text>
+          </ion-item>
+
+
+
+
+          <ion-item (click)="log_out()">
+            <i class="fas fa-sign-out-alt faicon fa-fw"></i>
+            <ion-text color="medium">Log Out</ion-text>
+          </ion-item>
+
+        </ion-menu-toggle>
+      </ion-list>
+     
+    
+     
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main">
+
+  </ion-router-outlet>
+</ion-app>

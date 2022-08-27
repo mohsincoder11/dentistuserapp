@@ -1,0 +1,84 @@
+<ion-content>
+  <ion-grid class="padding_cs">
+    <ion-row>
+      <ion-col size="11">
+              <span class="select_label">Select family member</span>
+      </ion-col>
+      <ion-col size="1">
+        <span class="cross_icon" (click)="dismiss()"><i class="fas fa-times"></i></span>
+
+      </ion-col>
+      
+   </ion-row> 
+   <ion-row  *ngIf="!family_member_load">
+    <div class="calender_Date_div scrollbar" scrollX="true">
+      <span *ngFor="let f of [].constructor(8);" [ngClass]="['calender_Date']">
+          <ion-label class="calender_day">    
+            <img src="assets/avatar/skeleton_avatar.png" alt="">
+            <span class="date_in">
+              <p>          <ion-skeleton-text animated ></ion-skeleton-text>
+              </p>
+            </span>
+          </ion-label>         
+      </span>
+    </div>
+  </ion-row>
+
+   <ion-row *ngIf="family_member_load">
+    <div class="calender_Date_div scrollbar" scrollX="true">
+      <span *ngFor="let f of patient_member_list;let i=index;" [ngClass]="['calender_Date']" 
+        id="day{{i+1}}">
+        <ion-label class="calender_day" id="border{{f.id}}" (click)="select_member(f.id)">
+          <img src="{{url.patient_image}}/{{f.image}}" alt="" *ngIf="f.image" >
+          <img src="assets/avatar/skeleton_avatar.png" alt="" *ngIf="!f.image">
+          <span class="checkbbox" id="checkbox{{f.id}}"><i class="fas fa-check-circle fa-fw"></i></span>
+          <span class="date_in">
+            <p>
+             <span *ngIf="f.id!=session_id"> {{f.f_name}}</span>
+             <span *ngIf="f.id==session_id">You</span>
+              </p>
+          </span>
+        </ion-label>
+      </span>
+
+    </div>
+  </ion-row>
+  
+      <span class="error_calss" *ngIf="select_user">Select user</span>
+
+  <ion-row>
+    <ion-col size="6" class="no_pad">
+      <ion-item lines="none">
+        <input type="radio" class="custom_radio" id="Consultaion" (click)="radioGroupChange($event)" name="visit_type"
+          value="Consultaion" checked>
+        <label for="Consultaion">Consultaion</label><br>
+      </ion-item>  
+      </ion-col>
+
+      <ion-col size="6" class="no_pad">
+        <ion-item lines="none">
+          <input type="radio" class="custom_radio" id="Follow_up" (click)="radioGroupChange($event)" name="visit_type"
+            value="Follow up" >
+          <label for="Follow_up">Follow up</label><br>
+        </ion-item>  
+        </ion-col>
+
+        <ion-col size="6" class="no_pad">
+          <ion-item lines="none">
+            <input type="radio" class="custom_radio" id="Show_report" (click)="radioGroupChange($event)" name="visit_type"
+              value="Show report" >
+            <label for="Show_report">Show report</label><br>
+          </ion-item>  
+          </ion-col>
+
+        
+  </ion-row>
+  <ion-row >
+    <ion-col size="12" class="padding_top">
+      <ion-button expand="block" class="select_user_button"  (click)="confirm_appointment()"> Confirm Booking
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  </ion-grid>
+</ion-content>
